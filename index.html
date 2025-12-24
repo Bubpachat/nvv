@@ -50,6 +50,43 @@
       .slide-up {
         animation: slideUp 0.3s ease-out forwards;
       }
+
+      .pin {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-15deg);
+        width: 14px;
+        height: 14px;
+        background: radial-gradient(circle at 30% 30%, #f8abab, #fa1515);
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+        z-index: 10;
+      }
+
+      /* หัวหมุดซ้อน */
+      .pin::before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: 2px;
+        width: 10px;
+        height: 6px;
+        background: linear-gradient(#fde047, #f5490b);
+        border-radius: 50%;
+      }
+
+      /* เข็ม */
+      .pin::after {
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 14px;
+        background: linear-gradient(#e5e7eb, #9ca3af);
+      }
     </style>
   </head>
   <body
@@ -479,8 +516,8 @@
 
           div.innerHTML = `
                 <!-- หมุด -->
-                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-red-500 shadow-sm z-10 border border-red-700"></div>
-                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white/50 rounded-full z-20"></div>
+                <div class="pin"></div>
+                
 
                 <!-- ข้อความ -->
                 <div class="mb-4">
@@ -491,21 +528,21 @@
                 
                 <!-- Footer ของโน้ต -->
                 <div class="mt-auto pt-3 border-t border-black/10">
-                <div class="flex items-center gap-2 mb-2 opacity-80">
-                  <div class="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center text-sm overflow-hidden font-bold text-black/50 uppercase border border-white/30">
-                    ${authorName.charAt(0)}
-                  </div>
+              <div class="flex items-center gap-2 mb-2 opacity-80">
+                <div class="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center text-sm overflow-hidden font-bold text-black/50 uppercase border border-white/30">
+                  ${authorName.charAt(0)}
+                </div>
 
-                  <div class="flex flex-col leading-none overflow-hidden">
-                    <span class="text-sm font-bold truncate">
-                      ${maskName(authorName)}
-                    </span>
-                    <span class="text-[10px] opacity-70 truncate">
-                      ${maskEmail(authorEmail)}
-                    </span>
-                  </div>
+                <div class="flex flex-col leading-none overflow-hidden">
+                  <span class="text-sm font-bold truncate">
+                    ${maskName(authorName)}
+                  </span>
+                  <span class="text-[10px] opacity-70 truncate">
+                    ${maskEmail(authorEmail)}
+                  </span>
                 </div>
               </div>
+            </div>
                 </div>
             `;
           wallContainer.appendChild(div);
